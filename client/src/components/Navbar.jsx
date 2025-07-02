@@ -132,7 +132,7 @@ export default function Navbar({ category, setCategory, setSearchTerm, query, se
                             }}
                             className="bg-red-500 text-white px-3 py-1 hover:bg-red-600 cursor-pointer"
                         >
-                            ❌ Clear
+                            Clear
                         </button>
                     ) : (
                         <button
