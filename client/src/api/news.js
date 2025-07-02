@@ -1,5 +1,4 @@
-const BACKEND_URL = "http://localhost:5000/api/news";
-// const BACKEND_URL = "https://digibarta-backend.onrender.com/api/news";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 export const fetchNewsByCategory = async (category, page = 1) => {
   try {

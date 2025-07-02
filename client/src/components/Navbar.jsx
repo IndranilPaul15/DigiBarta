@@ -5,7 +5,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
-export default function Navbar({ category, setCategory, setSearchTerm ,query,setQuery }) {
+export default function Navbar({ category, setCategory, setSearchTerm, query, setQuery }) {
     const [darkMode, setDarkMode] = useState(() => { return localStorage.getItem("theme") === "dark"; });
     const [dateTime, setDateTime] = useState('');
     const [weather, setWeather] = useState("Loading...");
@@ -77,7 +77,7 @@ export default function Navbar({ category, setCategory, setSearchTerm ,query,set
             setHasSearched(true);
         }
     };
-// console.log(category)
+    // console.log(category)
     return (
         <nav className="fixed top-0 left-0 w-full z-50 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-400 border-b border-gray-200 dark:border-gray-700 font-poppins">
             {/* 🔷 Top Row */}
@@ -112,22 +112,22 @@ export default function Navbar({ category, setCategory, setSearchTerm ,query,set
                         type="text"
                         placeholder="Search news..."
                         value={query}
-                        onChange={(e) => {setQuery(e.target.value) ,setHasSearched(false)}}
-                        onClick={()=>{
+                        onChange={(e) => { setQuery(e.target.value), setHasSearched(false) }}
+                        onClick={() => {
                             setQuery(''),
-                            setHasSearched(false)
-                            }
+                                setHasSearched(false)
+                        }
                         }
                         className="px-2 pl-4 py-1 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 w-full sm:w-69 border-none outline-none text-gray-900 dark:text-gray-200"
                     />
-                    {hasSearched  ? (
+                    {hasSearched ? (
                         <button
                             type="button"
                             onClick={() => {
                                 setQuery("");
                                 setSearchTerm("");
                                 setCategory("general"); // ✅ Reset to default
-                                navigate("/"); 
+                                navigate("/");
                                 setHasSearched(false);// ✅ Optional: reset route
                             }}
                             className="bg-red-500 text-white px-3 py-1 hover:bg-red-600 cursor-pointer"
@@ -136,11 +136,11 @@ export default function Navbar({ category, setCategory, setSearchTerm ,query,set
                         </button>
                     ) : (
                         <button
-                        
+
                             type="submit"
                             className="bg-blue-500 text-white px-3 py-1 hover:bg-blue-600 cursor-pointer"
                         >
-                            🔍 Search
+                            Search
                         </button>
                     )}
 
