@@ -1,4 +1,5 @@
 const BACKEND_URL = "http://localhost:5000/api/news";
+// const BACKEND_URL = "https://digibarta-backend.onrender.com/api/news";
 
 export const fetchNewsByCategory = async (category, page = 1) => {
   try {

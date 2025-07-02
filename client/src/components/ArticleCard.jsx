@@ -12,7 +12,7 @@ export default function ArticleCard({ article, small = false }) {
         alt="article"
         className={`w-full h-auto object-cover `}
         onError={(e) => {
-          const fallback = "public/placeholder.png";
+          const fallback = "/placeholder.png";
           const cdnProxy = `https://images.weserv.nl/?url=${encodeURIComponent(
             article.urlToImage?.replace("https://", "").replace("http://", "")
           )}`;

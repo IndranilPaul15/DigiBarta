@@ -10,7 +10,7 @@ export default function HeroArticle({ article }) {
       <img src={`http://localhost:5000/api/proxy-image?url=${encodeURIComponent(imageUrl)}`}
         alt="hero" className="w-full h-93 object-cover group-hover:scale-105 transition-transform"
         onError={(e) => {
-          const fallback = "public/placeholder.png";
+          const fallback = "/placeholder.png";
           const cdnProxy = `https://images.weserv.nl/?url=${encodeURIComponent(
             article.urlToImage?.replace("https://", "").replace("http://", "")
           )}`;
