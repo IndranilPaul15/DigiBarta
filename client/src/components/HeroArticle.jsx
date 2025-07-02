@@ -22,8 +22,8 @@ export default function HeroArticle({ article }) {
           }
         }}
       />
-      <div className="absolute bottom-0 bg-black/60 w-full p-4 text-white">
-        <h2 className="text-xl font-bold mb-1 line-clamp-2">{article.title}</h2>
+      <div className="absolute bottom-0 rounded-br-[50px] rounded-tl-4xl bg-black/66 w-full p-4 text-white">
+        <h2 className="text-xl border-l-3 border-t-3 rounded-tl-2xl pl-4 border-red-700 p-1.5 font-bold mb-1 line-clamp-2">{article.title}</h2>
         <p className="text-sm text-gray-200 line-clamp-2">{article.description}</p>
       </div>
     </Link>
