@@ -4,7 +4,7 @@ export const summarizeArticle = async (content, meta) => {
   // console.log("visitorid",visitorId)
   try {
     const res = await fetch(
-      "http://localhost:5000/api/summarize",
+      "https://digibarta-backend.onrender.com/api/summarize",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

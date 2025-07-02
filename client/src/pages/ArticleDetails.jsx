@@ -17,7 +17,7 @@ export default function ArticleDetails() {
   useEffect(() => {
     const fetchArticle = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/articles/${id}`);
+        const res = await fetch(`https://digibarta-backend.onrender.com/api/articles/${id}`);
         if (!res.ok) throw new Error("Article not found");
         const data = await res.json();
         setArticle(data);

@@ -1,6 +1,6 @@
 export const fetchFullContent = async (url) => {
   try {
-    const res = await fetch("http://localhost:5000/api/fetch-full-article", {
+    const res = await fetch("https://digibarta-backend.onrender.com/api/fetch-full-article", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ url }),

@@ -8,7 +8,7 @@ export default function ArticleCard({ article, small = false }) {
       className={`group border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-[1.02] hover:shadow-2xl ${small ? 'flex gap-3 h-28' : 'flex-col'}`}
     >
       <img
-        src={`http://localhost:5000/api/proxy-image?url=${encodeURIComponent(imageUrl)}`}
+        src={`https://digibarta-backend.onrender.com/api/proxy-image?url=${encodeURIComponent(imageUrl)}`}
         alt="article"
         className={`w-full h-auto object-cover `}
         onError={(e) => {

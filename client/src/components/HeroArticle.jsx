@@ -7,7 +7,7 @@ export default function HeroArticle({ article }) {
       to={`/article/${slugify(article.title)}`}
       className="relative group overflow-hidden rounded-xl shadow-lg"
     >
-      <img src={`http://localhost:5000/api/proxy-image?url=${encodeURIComponent(imageUrl)}`}
+      <img src={`https://digibarta-backend.onrender.com/api/proxy-image?url=${encodeURIComponent(imageUrl)}`}
         alt="hero" className="w-full h-93 object-cover group-hover:scale-105 transition-transform"
         onError={(e) => {
           const fallback = "/placeholder.png";

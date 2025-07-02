@@ -5,7 +5,7 @@ export default function MySummaries() {
   const [summaries, setSummaries] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/summaries")
+    fetch("https://digibarta-backend.onrender.com/api/summaries")
       .then(res => res.json())
       .then(data => setSummaries(data))
       .catch(err => console.error("Error fetching summaries:", err));
@@ -13,7 +13,7 @@ export default function MySummaries() {
 
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/api/summaries/${id}`, {
+    fetch(`https://digibarta-backend.onrender.com/api/summaries/${id}`, {
       method: "DELETE"
     })
       .then(() => {
