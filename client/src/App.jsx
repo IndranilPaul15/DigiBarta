@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import { v4 as uuidv4 } from 'uuid';
+import Footer from "./components/Footer";
 
 function App() {
   const [category, setCategory] = useState("general");
@@ -30,6 +31,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main >
+      <Footer/>
     </div>
   )
 }
