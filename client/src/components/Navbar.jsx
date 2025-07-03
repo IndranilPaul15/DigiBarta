@@ -15,6 +15,8 @@ export default function Navbar({ category, setCategory, setSearchTerm, query, se
     const closeMenu = () => setIsOpen(false);
     const navigate = useNavigate();
     const [hasSearched, setHasSearched] = useState(false);
+    const pathname = window.location.pathname
+
 
     useEffect(() => {
         const updateDateTime = () => {
@@ -47,13 +49,11 @@ export default function Navbar({ category, setCategory, setSearchTerm, query, se
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition(async (position) => {
                 const { latitude, longitude } = position.coords;
-                // console.log(longitude, latitude)
                 try {
                     const apiKey = import.meta.env.VITE_OPENWEATHER_API
                     const res = await fetch(
                         `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`
                     );
-                    // console.log(res)
                     const data = await res.json();
                     setWeather({
                         city: data.name,
@@ -126,9 +126,9 @@ export default function Navbar({ category, setCategory, setSearchTerm, query, se
                             onClick={() => {
                                 setQuery("");
                                 setSearchTerm("");
-                                setCategory("general"); // ✅ Reset to default
+                                setCategory("general");
                                 navigate("/");
-                                setHasSearched(false);// ✅ Optional: reset route
+                                setHasSearched(false);
                             }}
                             className="bg-red-500 text-white px-3 py-1 hover:bg-red-600 cursor-pointer"
                         >
@@ -184,10 +184,10 @@ export default function Navbar({ category, setCategory, setSearchTerm, query, se
 
                     {/* Nav links */}
                     <div
-                        className={`flex-col sm:flex-row gap-4 justify-around items-center md:text-base absolute sm:static top-full left-0 w-full sm:w-auto sm:flex bg-gray-300 dark:bg-gray-800 sm:dark:bg-transparent sm:bg-transparent shadow sm:shadow-none z-40 p-4 sm:p-0 transition-all duration-500 ease-in-out transform ${isOpen ? 'flex translate-y-0 opacity-100' : 'hidden sm:flex -translate-y-full sm:translate-y-0 opacity-0 sm:opacity-100'}`}
+                        className={`flex-col sm:flex-row gap-4 md:gap-6 justify-around items-center md:text-base absolute sm:static top-full left-0 w-full sm:w-auto sm:flex bg-gray-300 dark:bg-gray-800 sm:dark:bg-transparent sm:bg-transparent shadow sm:shadow-none z-40 p-4 sm:p-0 transition-all duration-500 ease-in-out transform ${isOpen ? 'flex translate-y-0 opacity-100' : 'hidden sm:flex -translate-y-full sm:translate-y-0 opacity-0 sm:opacity-100'}`}
                     >
 
-                        <Link to="/" className=" active:font-bold sm:border-none sm:w-auto sm:p-0  border-b w-full pb-1" onClick={closeMenu}>Home</Link>
+                        <Link to="/" className={` active:font-bold active:sm:border-b-2 sm:border-0 sm:w-auto sm:px-2 sm:pb-0 border-b w-full pb-1 ${pathname === "/" ? "font-bold sm:border-b-3 text-blue-600 dark:text-amber-300" : ""}`} onClick={closeMenu}>Home</Link>
                         <select
                             value={category === "general" ? "" : category}
                             onChange={(e) => {
@@ -201,17 +201,17 @@ export default function Navbar({ category, setCategory, setSearchTerm, query, se
                             <option value="" disabled hidden>
                                 Category
                             </option>
-                            <option className="text-gray-950" value="technology">Technology</option>
-                            <option className="text-gray-950" value="business">Business</option>
-                            <option className="text-gray-950" value="sports">Sports</option>
-                            <option className="text-gray-950" value="health">Health</option>
-                            <option className="text-gray-950" value="science">Science</option>
-                            <option className="text-gray-950" value="entertainment">Entertainment</option>
+                            <option className="text-white bg-gray-600 " value="technology">Technology</option>
+                            <option className="text-white bg-gray-600 " value="business">Business</option>
+                            <option className="text-white bg-gray-600 " value="sports">Sports</option>
+                            <option className="text-white bg-gray-600 " value="health">Health</option>
+                            <option className="text-white bg-gray-600 " value="science">Science</option>
+                            <option className="text-white bg-gray-600 " value="entertainment">Entertainment</option>
                         </select>
 
-                        <Link to="/summaries" className="hover:text-blue-500 active:font-bold sm:border-none sm:w-auto sm:p-0  border-b w-full pb-1" onClick={closeMenu}>Summaries</Link>
-                        <Link to="/about" className="hover:text-blue-500 active:font-bold sm:border-none sm:w-auto sm:p-0  border-b w-full pb-1" onClick={closeMenu}>About</Link>
-                        <Link to="/contact" className="hover:text-blue-500 active:font-bold sm:border-none sm:w-auto sm:p-0  border-b w-full pb-1" onClick={closeMenu}>Contact</Link>
+                        <Link to="/summaries" className={` active:font-bold active:sm:border-b-2 sm:border-0 sm:w-auto sm:px-2 sm:pb-0 border-b w-full pb-1 ${pathname === "/summaries" ? "font-bold sm:border-b-3 text-blue-600 dark:text-amber-300" : ""}`} onClick={closeMenu}>Summaries</Link>
+                        <Link to="/about" className={` active:font-bold active:sm:border-b-2 sm:border-0 sm:w-auto sm:px-2 sm:pb-0 border-b w-full pb-1 ${pathname === "/about" ? "font-bold sm:border-b-3 text-blue-600 dark:text-amber-300" : ""}`} onClick={closeMenu}>About</Link>
+                        <Link to="/contact" className={` active:font-bold active:sm:border-b-2 sm:border-0 sm:w-auto sm:px-2 sm:pb-0 border-b w-full pb-1 ${pathname === "/contact" ? "font-bold sm:border-b-3 text-blue-600 dark:text-amber-300" : ""}`} onClick={closeMenu}>Contact</Link>
                     </div>
                     <button
                         onClick={() => setDarkMode(!darkMode)}
