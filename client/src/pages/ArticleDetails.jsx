@@ -13,11 +13,12 @@ export default function ArticleDetails() {
   const [showFull, setShowFull] = useState(false);
   const [loadingFullText, setLoadingFullText] = useState(true);
   const summaryRef = useRef(null);
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
   // Load article from Storage
   useEffect(() => {
     const fetchArticle = async () => {
       try {
-        const res = await fetch(`https://digibarta-backend.onrender.com/api/articles/${id}`);
+        const res = await fetch(`${BACKEND_URL}/api/articles/${id}`);
         if (!res.ok) throw new Error("Article not found");
         const data = await res.json();
         setArticle(data);

@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { slugify } from "../../utils/slugify";
 export default function MySummaries() {
   const [summaries, setSummaries] = useState([]);
-
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
   useEffect(() => {
-    fetch("https://digibarta-backend.onrender.com/api/summaries")
+    fetch(`${BACKEND_URL}/api/summaries`)
       .then(res => res.json())
       .then(data => setSummaries(data))
       .catch(err => console.error("Error fetching summaries:", err));
@@ -13,7 +13,7 @@ export default function MySummaries() {
 
 
   const handleDelete = (id) => {
-    fetch(`https://digibarta-backend.onrender.com/api/summaries/${id}`, {
+    fetch(`${BACKEND_URL}/api/summaries/${id}`, {
       method: "DELETE"
     })
       .then(() => {

@@ -1,10 +1,11 @@
 export const summarizeArticle = async (content, meta) => {
   const { title, source, url, image, date } = meta;
   const visitorId = localStorage.getItem("visitorId") || "unknown";
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
   // console.log("visitorid",visitorId)
   try {
     const res = await fetch(
-      "https://digibarta-backend.onrender.com/api/summarize",
+      `${BACKEND_URL}/api/summarize`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
